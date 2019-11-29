@@ -213,7 +213,7 @@ public class PielView extends View {
             tmpAngle += sweepAngle;
         }
 
-        drawCenterImage(canvas, drawableCenterImage);
+       // drawCenterImage(canvas, drawableCenterImage);
     }
 
     private void drawBackgroundColor(Canvas canvas, int color) {
@@ -261,7 +261,7 @@ public class PielView extends View {
     }
 
     private void drawCenterImage(Canvas canvas, Drawable drawable) {
-        ;
+
         Bitmap bitmap = LuckyWheelUtils.drawableToBitmap(drawable);
         bitmap = Bitmap.createScaledBitmap(bitmap, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), false);
         canvas.drawBitmap(bitmap, getMeasuredWidth() / 2 - bitmap.getWidth() / 2,
@@ -290,7 +290,7 @@ public class PielView extends View {
 
         Typeface typeface = Typeface.create(Typeface.SANS_SERIF, Typeface.NORMAL);
         mTextPaint.setTypeface(typeface);
-        mTextPaint.setTextAlign(Paint.Align.LEFT);
+        mTextPaint.setTextAlign(Paint.Align.RIGHT);
         mTextPaint.setTextSize(mTopTextSize);
         float textWidth = mTextPaint.measureText(mStr);
         int hOffset = (int) (mRadius * Math.PI / mLuckyItemList.size() / 2 - textWidth / 2);
@@ -317,7 +317,7 @@ public class PielView extends View {
         Typeface typeface = Typeface.create(Typeface.SANS_SERIF, Typeface.NORMAL);
         mTextPaint.setTypeface(typeface);
         mTextPaint.setTextSize(mSecondaryTextSize);
-        mTextPaint.setTextAlign(Paint.Align.LEFT);
+        mTextPaint.setTextAlign(Paint.Align.RIGHT);
 
         float textWidth = mTextPaint.measureText(mStr);
 
@@ -348,7 +348,7 @@ public class PielView extends View {
         Typeface typeface = Typeface.create(Typeface.SANS_SERIF, Typeface.NORMAL);
         mTextPaint.setTypeface(typeface);
         mTextPaint.setTextSize(mSecondaryTextSize);
-        mTextPaint.setTextAlign(Paint.Align.LEFT);
+        mTextPaint.setTextAlign(Paint.Align.RIGHT);
 
         float textWidth = mTextPaint.measureText(mStr);
 

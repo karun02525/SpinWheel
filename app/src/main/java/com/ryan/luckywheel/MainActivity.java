@@ -1,9 +1,12 @@
 package com.ryan.luckywheel;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -89,7 +92,7 @@ public class MainActivity extends Activity {
 
         LuckyItem luckyItem55 = new LuckyItem();
         luckyItem55.secondaryText = "You Won";
-        luckyItem55.secondaryText2 = "Bus";
+        luckyItem55.secondaryText2 = "Pen";
         luckyItem55.color =Color.parseColor("#337D37");
         data.add(luckyItem55);
 
@@ -103,10 +106,13 @@ public class MainActivity extends Activity {
 
 
         luckyWheelView.setData(data);
-        luckyWheelView.setRound(5);
+       // luckyWheelView.setRound(5);
         luckyWheelView.setTouchEnabled(false);
         luckyWheelView.setLuckyWheelTextColor(Color.parseColor("#FFFFFF"));
-      //  luckyWheelView.setLuckyWheelBackgrouldColor(Color.parseColor("#000000"));
+       // luckyWheelView.setLuckyWheelCursorImage(R.drawable.ic_cursor);
+
+
+        //  luckyWheelView.setLuckyWheelBackgrouldColor(Color.parseColor("#000000"));
        // luckyWheelView.setLuckyWheelCursorImage(R.drawable.ic_cursor);
 
      //   luckyWheelView.setLuckyWheelBackgrouldColor(Color.parseColor("#000000"));
@@ -127,10 +133,19 @@ public class MainActivity extends Activity {
             }
         });
 
+        findViewById(R.id.cursorView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int index = getRandomIndex();
+                luckyWheelView.startLuckyWheelWithTargetIndex(index);
+            }
+        });
+
         luckyWheelView.setLuckyRoundItemSelectedListener(new LuckyWheelView.LuckyRoundItemSelectedListener() {
             @Override
             public void LuckyRoundItemSelected(int index) {
-                Toast.makeText(getApplicationContext(), data.get(index).secondaryText +" "+data.get(index).secondaryText2, Toast.LENGTH_SHORT).show();
+                diaglog(data.get(index).secondaryText +" "+data.get(index).secondaryText2);
+                //Toast.makeText(getApplicationContext(), data.get(index).secondaryText +" "+data.get(index).secondaryText2, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -143,5 +158,33 @@ public class MainActivity extends Activity {
     private int getRandomRound() {
         Random rand = new Random();
         return rand.nextInt(10) + 15;
+    }
+
+
+
+
+    public void diaglog(String s) {
+
+
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.custom_dialog);
+        Button dialogButton = (Button) dialog.findViewById(R.id.cool_id);
+        TextView textView = (TextView) dialog.findViewById(R.id.dialog_score_id);
+     //   String a = currentNumber(360 - (degree % 360));
+
+        textView.setText(s);
+
+
+        // if button is clicked, close the custom dialog
+
+        dialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+
+            }
+        });
+        dialog.show();
+
     }
 }

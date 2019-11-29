@@ -12,6 +12,7 @@ import android.util.TypedValue;
  */
 
 public class LuckyWheelUtils {
+
     public static Bitmap drawableToBitmap(Drawable drawable) {
         Bitmap bitmap;
 
